@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { blogData, genBlogId } from "../../services/BlogData";
+import { blogData, genBlogId, locale, options } from "../../services/BlogData";
 
 
 type Props = {
@@ -34,6 +34,7 @@ export function Modal({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     blogData.push({
       id: genBlogId(),
       title: modalFields.title,
@@ -41,8 +42,10 @@ export function Modal({
       body: modalFields.body,
       description: modalFields.description,
       createdBy: modalFields.createdBy,
-      dateCreated: new Date(Date.now()).toString()
+      dateCreated: new Date(Date.now())
+        .toLocaleDateString(locale, options)
     });
+
     event.currentTarget.reset();
   }
 

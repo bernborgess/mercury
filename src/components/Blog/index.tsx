@@ -11,7 +11,7 @@ export function Blog() {
               (blog) =>
                 <BlogList
                   key={blog.id}
-                  data={blog}
+                  blog={blog}
                 />
             )
           }

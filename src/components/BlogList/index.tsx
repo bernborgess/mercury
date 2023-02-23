@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 import { IBlog } from "../../services/interface";
 
 type Props = {
-  data: IBlog
+  blog: IBlog
 };
 
-export function BlogList({ data }: Props) {
+export function BlogList({ blog }: Props) {
   return (
     <li>
       <div className="info">
-        <h6>John Doe</h6>
-        <small>May 3 2022</small>
+        <h6>{blog.createdBy}</h6>
+        <small>{blog.dateCreated}</small>
       </div>
-      <Link to={`/${data.id}`}>
-        <p>{data.title}</p>
+      <Link to={`/${blog.id}`}>
+        <p>{blog.title}</p>
       </Link>
     </li>
   );
