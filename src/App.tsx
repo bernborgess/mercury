@@ -14,7 +14,7 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
 
   function handleOpenModal() {
-    setShowModal(false);
+    setShowModal(true);
   }
 
   return (
