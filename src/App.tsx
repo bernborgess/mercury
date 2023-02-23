@@ -1,13 +1,21 @@
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Routes
-} from 'react-router-dom'
-import './App.css'
-import { Blog } from './components/Blog'
-import { BlogDetails } from './components/BlogDetails'
+} from 'react-router-dom';
+import './App.css';
+import { Blog } from './components/Blog';
+import { BlogDetails } from './components/BlogDetails';
+import { Modal } from './components/Modal';
 
 export default function App() {
+
+  const [showModal, setShowModal] = useState(false);
+
+  function handleOpenModal() {
+    setShowModal(false);
+  }
 
   return (
     <div className="App">
@@ -16,7 +24,7 @@ export default function App() {
           <div className="search">
             <input type="text" placeholder="Search a blog"></input>
           </div>
-          <button>Add New</button>
+          <button onClick={handleOpenModal}>Add New</button>
         </div>
       </header>
       <Router>
@@ -25,6 +33,12 @@ export default function App() {
           <Route path="/:id" element={<BlogDetails />} />
         </Routes>
       </Router>
+      <Modal
+        {...{
+          showModal,
+          setShowModal
+        }}
+      />
     </div>
   )
 }
